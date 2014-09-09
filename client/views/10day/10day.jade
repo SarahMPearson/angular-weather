@@ -1,0 +1,15 @@
+h3 {{title}}
+
+  .row
+    .col-xs-6.col-xs-offset-3
+      form(role='form', novalidate, name='tenDayForm')
+        .form-group
+          label(for='zip') Zip Code
+          input.form-control#zip(ng-pattern='/^[0-9]{5}$/', required, ng-model='zip', type='text', name='zip', autofocus)
+        button.btn.btn-primary(type='submit', ng-show='tenDayForm.$valid', ng-click='getTenDay()') Get 10 Day Forecast
+    .col-xs-3
+  .row(ng-show='forecasts')
+    .col-xs-12
+      .forecast(ng-repeat='forecast in forecasts')
+        img(ng-src='{{forecast.icon_url}}')
+
